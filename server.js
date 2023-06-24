@@ -29,7 +29,33 @@ app.get("/api/blogs", async (req, res) => {
       res.status(500).send({ message: error });
     }
   });
+
+//Read Specific
+app.get("/api/blogs/:id", async (req, res) => {
+    const { id } = req.params;
+    const response = await BlogModel.findById(id);
+    res.status(200).send({ message: "Specific Blog", data: response });
   
+    try {
+    } catch (error) {
+      res.status(500).send({ message: error });
+    }
+  });
+  
+  //Update Specific
+  app.patch("/api/blogs/:id", async (req, res) => {
+    const { id } = req.params;
+    await BlogModel.updateOne({ _id: id }, req.body);
+  
+    let response = await BlogModel.findById(id);
+  
+    res.status(200).send({ message: "Updated Blog", data: response });
+  
+    try {
+    } catch (error) {
+      res.status(500).send({ message: error });
+    }
+  });
 
 app.listen(8000, () => {
   console.log("Server running on port 8000");
