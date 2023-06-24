@@ -1,7 +1,7 @@
-require("./database/conn");
+require("./databases/conn");
 
 const express = require("express");
-const BlogModel = require("./model/blog.model");
+// const BlogModel = require("./model/blog.model");
 const app = express();
 const cors = require("cors");
 app.use(express.json());
@@ -76,6 +76,6 @@ app.delete("/api/blogs/:id", async (req, res) => {
     }
   });
 
-app.listen(8000, () => {
-  console.log("Server running on port 8000");
+app.listen(3000, () => {
+  console.log("Server running on port 3000");
 });
