@@ -19,7 +19,17 @@ app.post("/api/blogs", async (req, res) => {
   }
 });
 
-
+//Read
+app.get("/api/blogs", async (req, res) => {
+    const response = await BlogModel.find({});
+    res.status(200).send({ message: "All Blogs", data: response });
+  
+    try {
+    } catch (error) {
+      res.status(500).send({ message: error });
+    }
+  });
+  
 
 app.listen(8000, () => {
   console.log("Server running on port 8000");
