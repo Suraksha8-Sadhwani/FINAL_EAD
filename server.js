@@ -11,7 +11,7 @@ app.use(cors());
 //Create
 app.post("/api/blogs", async (req, res) => {
   const response = await BlogModel.create(req.body);
-  res.status(200).send({ message: "Blog Created", data: response });
+  res.status(200).send({ message: "Recipe Created", data: response });
 
   try {
   } catch (error) {
@@ -22,7 +22,7 @@ app.post("/api/blogs", async (req, res) => {
 //Read
 app.get("/api/blogs", async (req, res) => {
     const response = await BlogModel.find({});
-    res.status(200).send({ message: "All Blogs", data: response });
+    res.status(200).send({ message: "All Recipes", data: response });
   
     try {
     } catch (error) {
@@ -34,7 +34,7 @@ app.get("/api/blogs", async (req, res) => {
 app.get("/api/blogs/:id", async (req, res) => {
     const { id } = req.params;
     const response = await BlogModel.findById(id);
-    res.status(200).send({ message: "Specific Blog", data: response });
+    res.status(200).send({ message: "Specific Recipes", data: response });
   
     try {
     } catch (error) {
@@ -49,7 +49,7 @@ app.get("/api/blogs/:id", async (req, res) => {
   
     let response = await BlogModel.findById(id);
   
-    res.status(200).send({ message: "Updated Blog", data: response });
+    res.status(200).send({ message: "Updated Recipes", data: response });
   
     try {
     } catch (error) {
@@ -64,11 +64,11 @@ app.delete("/api/blogs/:id", async (req, res) => {
     var response = await BlogModel.findById(id);
   
     if (!response) {
-      return res.status(401).send({ message: "No such blog found" });
+      return res.status(401).send({ message: "No recipe found" });
     }
   
     response = await BlogModel.deleteOne({ _id: id });
-    res.status(200).send({ message: "Deleted Blog", data: response });
+    res.status(200).send({ message: "Deleted Recipes", data: response });
   
     try {
     } catch (error) {
